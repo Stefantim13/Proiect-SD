@@ -39,31 +39,16 @@ void merge(vector<long long> &v, vector<long long> &left, vector<long long> &rig
   while (i < len1 && j < len2)
   {
     if (left[i] <= right[j])
-    {
-      v[k] = left[i];
-      i++;
-    }
+      v[k++] = left[i++];
     else
-    {
-      v[k] = right[j];
-      j++;
-    }
-    k++;
+      v[k++] = right[j++];
   }
 
   while (i < len1)
-  {
-    v[k] = left[i];
-    k++;
-    i++;
-  }
+    v[k++] = left[i++];
 
   while (j < len2)
-  {
-    v[k] = right[j];
-    k++;
-    j++;
-  }
+    v[k++] = right[j++];
 }
 
 void timsort(vector<long long> &v, long long n)
@@ -77,9 +62,9 @@ void timsort(vector<long long> &v, long long n)
     insertionsort(v, i, min(i + CHUNK_SIZE - 1, n - 1));
   }
   
-  for (i = CHUNK_SIZE; i < n; i = i * 2)
+  for (i = CHUNK_SIZE; i < n; i = i << 1)
   {
-    for (j = 0; j < n; j += i * 2)
+    for (j = 0; j < n; j += i << 1)
     {
       long long mid = i + j - 1;
       long long right = min((j + 2 * i - 1), (n - 1));

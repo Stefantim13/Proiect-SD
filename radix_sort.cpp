@@ -4,7 +4,7 @@ using namespace std;
 
 ifstream fin(INPUT_FILE);
 
-const int B = 1 << 16;
+const int B = 1 << 10;
 vector<long long> v, w;
 
 void count_sort(long long p, long long n)
